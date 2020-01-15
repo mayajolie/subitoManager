@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar [(ngModel)]="autocomplete.query" id="depart" (ionInput)="updateSearchResults()" placeholder="Adresse de départ"></ion-searchbar>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar [(ngModel)]="destination.input" id="destination" (ionInput)="adresseDestination()" placeholder="Adresse de destination "></ion-searchbar>
+  </ion-toolbar>
+ 
+  <ion-button expand="block" (click)="get_rout()" type="submit">Calculer le tarif</ion-button>
+
+
+
+
+  <ion-list>
+      <ion-item *ngFor="let place of autocompleteItems" (touchstart)="selectSearchResult(place)">{{place.description}}</ion-item>
+  </ion-list>
+
+</ion-header>
+
+<ion-content>
+
+  <script src="//maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry"></script>
+
+
+
+</ion-content>

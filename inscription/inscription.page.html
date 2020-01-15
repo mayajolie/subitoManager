@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+    <ion-title>utilisateur</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-card>
+    <ion-card-header color="secondary">
+      <ion-card-title style="text-align: center;">SUBITO TAXI</ion-card-title>
+    </ion-card-header>
+    <div class="ion-padding">
+        <ion-segment  [(ngModel)]="relationship" color="primary">
+          <ion-segment-button (click)="listUser()" id="choix1" name="type" value="1">
+          Liste    
+      </ion-segment-button>
+          <ion-segment-button id="choix2" name="type"  value="2">
+              Ajouter
+            </ion-segment-button>
+        </ion-segment>
+      </div>
+  </ion-card>
+<ion-content>
+      <div [(ngSwitch)]="relationship" color="primary">
+          <ion-list *ngSwitchCase="'1'">
+    <ion-card class="ion-margin-bottom"  *ngFor=" let d of users ">
+        <ion-item>
+            <ion-avatar slot="start">
+                <img src="url('../../assets/logo.png">
+              </ion-avatar>
+            <ion-label>
+                <h2> {{d.pnom}}</h2>
+                <h2> {{d.adresse}}</h2>
+                <h5> {{d.telephone}}</h5>                                        
+            </ion-label>
+            <ion-icon slot="end" color="primary" name="eye" (click)="listUserById(d.id)" [routerLink]="['/menu/detail-user/']"></ion-icon>
+          </ion-item>
+      </ion-card>
+    </ion-list>
+  </div>
+  <div [(ngSwitch)]="relationship"> 
+      <ion-list *ngSwitchCase="'2'">
+          <ion-card class="ion-margin-bottom">
+              <form #ajout="ngForm" (ngSubmit)="inscrit(ajout.value)">
+                  <ion-item id="nomEnvo">
+                    <ion-input type="text" ngModel placeholder="Prénom & Nom" name="pnom" class="form-control"></ion-input>
+                  </ion-item>
+                  <ion-item id="prenomE">
+                    <ion-input type="email" ngModel placeholder="Adresse E-mail" name="email"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-input type="number" ngModel placeholder="Telephone" name="telephone" class="form-control"></ion-input>
+                  </ion-item>
+                  <ion-item >
+                      <ion-label>Date d'Anniversaire</ion-label>
+                      <ion-input type="date" ngModel placeholder="Date d'Anniversaire" name="anniversaire" class="form-control"></ion-input>
+                    </ion-item>
+                    <ion-item id="nomB">
+                        <ion-input type="text" ngModel placeholder="Adresse" name="adresse" class="form-control"></ion-input>
+                      </ion-item>
+                    <ion-item id="nomB">
+                    <ion-input type="password" ngModel placeholder="Mot de passe" name="password" class="form-control"></ion-input>
+                  </ion-item>
+                  <ion-item id="nomB">
+                      <ion-input type="password" ngModel placeholder="Retaper Mot de passe" name="password_r" class="form-control"></ion-input>
+                    </ion-item>
+                  <ion-button expand="block"  type="submit">ENREGISTRER</ion-button>
+                </form>
+            </ion-card>
+          </ion-list>
+        </div>
+</ion-content>

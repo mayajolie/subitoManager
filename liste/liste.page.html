@@ -1,0 +1,111 @@
+<ion-header translucent>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" >
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+    <ion-label>Nos Reservations</ion-label>
+  </ion-toolbar>
+</ion-header>
+  <ion-card>
+  <ion-card-header color="secondary">
+      <ion-card-title style="text-align: center;">SUBITO TAXI</ion-card-title>
+    </ion-card-header>
+    <div class="ion-padding">
+  <ion-segment [(ngModel)]="category" color="primary">
+      <ion-segment-button  checked="true" (click)="cours()"  name="type" value="1">
+        EN COURS
+      </ion-segment-button>
+      <ion-segment-button   (click)="attente()" name="type"  value="2">
+        En ATTENTE
+      </ion-segment-button>
+      <ion-segment-button  checked="true" (click)="archive()"  name="type" value="3">
+          ARCHIVES
+        </ion-segment-button>
+    </ion-segment>
+    </div>
+</ion-card>
+<ion-content >
+    
+    <div [ngSwitch]="category"> 
+        <ion-list *ngSwitchCase="'2'" >
+          
+            <div *ngIf ="ms" >
+                <h3>{{ms}}</h3>
+            </div>
+                <ion-card  *ngFor="let d of enatente">
+                  <ion-item>
+                      <ion-label>
+                          <h2 *ngIf="d.table == 'req_sc' || 'req_ac' || 'req_e'">Navette</h2>
+                          <h3 *ngIf="d.table != 'req_e' || d.table !='tr' || d.table !='tu'" style="color: red;">Particulier</h3>
+                          <h3 *ngIf="d.table === 'req_e' " style="color: blue;">Entrprise</h3>
+                          <h3 *ngIf="d.table == 'tr' " >T. Reg</h3>
+                          <h3 *ngIf="d.table == 'tu' " >T. Urbain</h3>
+
+
+                            <h2>{{d.pnom}}</h2>
+                            <span *ngIf="d.type_transfert == 1">Aller</span>
+                            <h5>{{d.dateh_reservation}}</h5> 
+                            <samp>{{d.prix}}</samp>
+
+                        </ion-label>
+                      <ion-icon slot="end" color="primary" name="eye" (click)="listOperationById(d.id,d.table)" [routerLink]="['/menu/details/']"></ion-icon>
+                    </ion-item>
+                  </ion-card>
+                </ion-list>
+      <ion-list *ngSwitchCase="'1'">
+          <div *ngIf="mes" >
+              <h3>{{mes}}</h3>
+            </div>
+
+             
+      <ion-card *ngFor="let d of encours">
+          <ion-item>
+             <ion-label *ngIf="d.table == 'req_sc' || 'req_ac' || 'req_e'">Navette</ion-label>
+              <ion-label *ngIf="d.table != 'req_e' " style="color: red;">Particulier</ion-label>
+              <ion-label *ngIf="d.table == 'req_e' " style="color: blue;">{{d.libelle_entreprise}}</ion-label>
+              <ion-label *ngIf="d.table == 'tr' " >T. Reg</ion-label>
+              <ion-label *ngIf="d.table == 'tu' " >T. Urbain</ion-label>
+
+              </ion-item>
+              <ion-item>
+              <ion-label>{{d.pnom}}</ion-label>
+              <span *ngIf="d.type_transfert == 1">Aller</span>
+              <span *ngIf="d.type_transfert == 2" >Retour</span>
+              <span *ngIf="d.type_transfert == 3" >Aller / Retour</span>
+              </ion-item>
+            <ion-item>
+              <ion-label>{{d.dateh_reservation}}</ion-label>
+              <samp>{{d.prix}}</samp>
+
+              <ion-icon slot="end" color="primary" name="eye" (click)="listOperationById(d.id,d.table)" [routerLink]="['/menu/details/']"></ion-icon>
+            </ion-item>
+          </ion-card>
+        </ion-list>
+        <ion-list *ngSwitchCase="'3'">
+            <ion-card *ngFor="let d of archives ">
+               
+                <ion-item>
+                   <ion-label *ngIf="d.table == 'req_sc' || 'req_ac' || 'req_e'">Navette</ion-label>
+                    <ion-label *ngIf="d.table != 'req_e' " style="color: red;">Particulier</ion-label>
+                    <ion-label *ngIf="d.table == 'req_e' " style="color: blue;">Entrprise</ion-label>
+                    <ion-label *ngIf="d.table == 'tr' " >T. Reg</ion-label>
+                    <ion-label *ngIf="d.table == 'tu' " >T. Urbain</ion-label>
+
+
+                    </ion-item>
+                    <ion-item>
+                    <ion-label>{{d.pnom}}</ion-label>
+                    <span *ngIf="d.type_transfert == 1">Aller</span>
+                    <span *ngIf="d.type_transfert == 2" >Retour</span>
+                    <samp *ngIf="d.type_transfert == 3" >Aller / Retour</samp>
+                    </ion-item>
+                  <ion-item>
+                    <ion-label>{{d.dateh_reservation}}</ion-label> 
+                        <samp>{{d.prix}}</samp>
+                    <ion-icon slot="end" color="primary" name="eye" (click)="listOperationById(d.id,d.table)" [routerLink]="['/menu/details/']"></ion-icon>
+                  </ion-item>
+                </ion-card>
+              </ion-list>
+  </div>
+
+</ion-content>

@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-icon slot="start"  name="arrow-round-back"  [routerLink]="['/menu/chauffeurs']"></ion-icon>
+    <ion-label>Details des Chauffeurs</ion-label>
+  </ion-toolbar>
+</ion-header>
+<ion-card>
+    <ion-card-header color="secondary">
+      <ion-card-title style="text-align: center;">SUBITO TAXI</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+<ion-content>
+    <ion-list *ngFor="let d of d">
+        <ion-card>
+          <ion-item>
+            <ion-label>
+             Nom Prenom :  {{d.pnom}}
+            </ion-label>
+          </ion-item>
+        <ion-item>
+                <ion-label>
+               Telephone :  {{d.telephone}}
+              </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                Adresse :   {{d.adresse}}
+                </ion-label>
+            </ion-item>
+            
+            </ion-card>
+        </ion-list>
+</ion-content>

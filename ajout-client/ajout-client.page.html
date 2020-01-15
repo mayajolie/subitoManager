@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+    <ion-title>Inscris Un Nouveau Client</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="ion-margin-bottom">
+  
+        <form #ajout="ngForm" (ngSubmit)="navette(ajout.value)">
+                  
+          <ion-item>
+            <ion-input type="text" ngModel placeholder="Prénom & Nom" name="pnom" class="form-control"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="email" ngModel placeholder="Adresse E-mail" name="telephone"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="number" ngModel placeholder="Telephone" name="telephone2" class="form-control"></ion-input>
+          </ion-item>
+            <ion-item >
+              <ion-label>Date de naissance</ion-label>
+            <ion-input type="date" ngModel placeholder="Date de naissance" name="motdepasse" class="form-control"></ion-input>
+          </ion-item>
+          <ion-item >
+            <ion-input type="text" ngModel placeholder="Adresse" name="motdepasse" class="form-control"></ion-input>
+          </ion-item>
+          <ion-item >
+            <ion-input type="password" ngModel placeholder="Mot de passe" name="cin" class="form-control"></ion-input>
+          </ion-item>
+          <ion-item >
+            <ion-input type="password" ngModel placeholder="Retaper Mot de passe" name="permis" class="form-control">
+            </ion-input>
+          </ion-item>
+          <ion-button expand="block" type="submit">Enregistrer</ion-button>
+        </form>
+      </ion-card>
+</ion-content>

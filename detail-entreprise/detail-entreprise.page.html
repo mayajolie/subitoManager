@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-icon slot="start"  name="arrow-round-back"  [routerLink]="['/menu/entrepise']"></ion-icon>
+    <ion-label>Details de l' Entreprise</ion-label>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list *ngFor="let d of d">
+        <ion-card>
+          <ion-item>
+            <ion-label>
+             Nom Gestionnaire :  {{d.pnom_owner}}
+            </ion-label>
+          </ion-item>
+        <ion-item>
+                <ion-label>
+               Telephone Gestionnaire :  {{d.phone_owner}}
+              </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                    Nom Entreprise :  {{d.libelle_entreprise}}
+                  </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                    Telephone Entreprise :  {{d.phone_entreprise}}
+                  </ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>
+                Adresse :   {{d.adresse}}
+                </ion-label>
+            </ion-item>
+          <ion-item>
+            <ion-label>
+             Bons de Commande :  {{d.bonscommande}}
+            </ion-label>
+          </ion-item>
+          <ion-item>
+          Adresse Email :    {{d.email1}}
+            </ion-item>  
+            </ion-card>
+        </ion-list>
+</ion-content>

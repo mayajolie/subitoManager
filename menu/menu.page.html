@@ -1,0 +1,24 @@
+<ion-menu content-id="content">
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+    <ion-title>menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+        <ion-menu-toggle *ngFor="let m of menus">
+            <ion-item (click)="onMenu(m)">
+            <ion-icon [name]="m.icon" slot="start" color="primary"></ion-icon>
+            <ion-label>{{m.title}}</ion-label>
+            </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+</ion-content>
+</ion-menu>
+
+<ion-router-outlet id="content"></ion-router-outlet>
+

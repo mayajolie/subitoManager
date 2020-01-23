@@ -1,27 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ReservationsPage } from './reservations.page';
-import { SuperTabsModule } from '@ionic-super-tabs/angular';
+import { ReservationsPageRoutingModule } from './reservations-routing.module';
 
-const routes: Routes = [
-  {
-    path: '',
-    component: ReservationsPage
-  }
-];
+import { ReservationsPage } from './reservations.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes),
-    SuperTabsModule
+    ReservationsPageRoutingModule
   ],
   declarations: [ReservationsPage]
 })
